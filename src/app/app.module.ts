@@ -19,9 +19,9 @@ import {CustomInterceptorService, MovieDetailsResolveService, PaginationResolveS
 
 
 const routes: Routes = [
-  {path: "movies", component: MoviesListComponent},
+  {path: "", component: MoviesListComponent},
   {path: "movies/:page", component: PaginationMoviesListComponent, resolve: {data: PaginationResolveService}},
-  {path: "movies/details/:id", component: MovieDetailsComponent, resolve: {data: MovieDetailsResolveService}},
+  {path: "details/:id", component: MovieDetailsComponent, resolve: {data: MovieDetailsResolveService}},
   {path: "movies/:page/details/:id", component: MovieDetailsComponent, resolve: {data: MovieDetailsResolveService}}
 ]
 
