@@ -18,7 +18,7 @@ export class MovieListComponent implements OnInit {
 
   ngOnInit(): void {
     this.genresService.getGenre(this.movie.genre_ids).subscribe((value: any) => {
-      this.movieGenre=value.slice(0,3)
+        this.movieGenre = value.slice(0, 3)
       }
     )
 

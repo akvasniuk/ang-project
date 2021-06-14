@@ -9,14 +9,11 @@ import {Component} from '@angular/core';
 
 export class AppComponent {
 
-  checkStatus: boolean = false
 
   darkMode() {
     const element = document.body;
     element.classList.toggle("dark-mode")
   }
 
-  check() {
-    this.checkStatus = true
-  }
+
 }

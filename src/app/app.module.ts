@@ -17,12 +17,10 @@ import {
 import {CustomInterceptorService, MovieDetailsResolveService, PaginationResolveService} from "./service";
 
 
-
 const routes: Routes = [
   {path: "", component: MoviesListComponent},
-  {path: "movies/:page", component: PaginationMoviesListComponent, resolve: {data: PaginationResolveService}},
-  {path: "details/:id", component: MovieDetailsComponent, resolve: {data: MovieDetailsResolveService}},
-  {path: "movies/:page/details/:id", component: MovieDetailsComponent, resolve: {data: MovieDetailsResolveService}}
+  {path: ":page", component: PaginationMoviesListComponent, resolve: {data: PaginationResolveService}},
+  {path: ":page/:id", component: MovieDetailsComponent, resolve: {data: MovieDetailsResolveService}}
 ]
 
 @NgModule({
@@ -43,9 +41,9 @@ const routes: Routes = [
     ReactiveFormsModule,
   ],
   providers: [{
-    provide:HTTP_INTERCEPTORS,
-    useClass:CustomInterceptorService,
-    multi:true
+    provide: HTTP_INTERCEPTORS,
+    useClass: CustomInterceptorService,
+    multi: true
   }],
   bootstrap: [AppComponent]
 })

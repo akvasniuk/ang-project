@@ -1,9 +1,7 @@
 <app-header></app-header>
 <button (click)="darkMode()" class="left button button--pan">Dark mode</button>
-<ul class="pagination">
-  <li><a routerLink="movies" (click)="check()">Movies</a></li>
-</ul>
-<app-pagination *ngIf="checkStatus"></app-pagination>
+
+<app-pagination></app-pagination>
 
 <router-outlet></router-outlet>
 
