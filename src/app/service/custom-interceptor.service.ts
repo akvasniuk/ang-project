@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
+import {HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest} from "@angular/common/http";
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -20,11 +20,14 @@ export class CustomInterceptorService implements HttpInterceptor {
     }
     if (req.url.includes("rating")) {
       rating = req.clone({
-        params: req.params.set('api_key', 'dbeb8a7c94c70b10030a2bea613ec0df').set('session_id', '816a2446c9412128ae6b4cf21a251eab7f027531')
+        headers:new HttpHeaders({
+          'Authorization':'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkYmViOGE3Yzk0YzcwYjEwMDMwYTJiZWE2MTNlYzBkZiIsInN1YiI6IjYwYzQ1MTkwNTllOGE5MDA3OGRiYWQ5YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Dcgtl_7lHfObt0qaYNQtqd2lYXI9zGDuiZIURDF8YnY'
+        }),
+        params: req.params.set('session_id', '816a2446c9412128ae6b4cf21a251eab7f027531')
       })
     }
     let clone = req.clone({
-      params: req.params.set('api_key', 'dbeb8a7c94c70b10030a2bea613ec0df')
+      headers:new HttpHeaders({'Authorization':'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkYmViOGE3Yzk0YzcwYjEwMDMwYTJiZWE2MTNlYzBkZiIsInN1YiI6IjYwYzQ1MTkwNTllOGE5MDA3OGRiYWQ5YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Dcgtl_7lHfObt0qaYNQtqd2lYXI9zGDuiZIURDF8YnY'})
     });
     if (pagination) {
       return next.handle(pagination)
